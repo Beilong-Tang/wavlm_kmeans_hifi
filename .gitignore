@@ -1,3 +1,4 @@
 *.pt
 *.pth
+*.scp
 __pycache__
