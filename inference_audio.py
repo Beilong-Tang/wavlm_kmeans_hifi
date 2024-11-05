@@ -66,7 +66,8 @@ if __name__ == "__main__":
     )
     parser.add_argument("--output_dir", type=str, required=True)
     parser.add_argument("--wavlm_ckpt", type=str, default="./ckpt/WavLM-Large.pt")
-    parser.add_argument("--kmeans_path", type=str, required="./ckpt/step160000_model.pth")
+    parser.add_argument("--kmeans_path", type=str, default="./ckpt/LibriSpeech_wavlm_k1000_L7.pt")
+    parser.add_argument("--ckpt_path", type=str, default = "./ckpt/step160000_model.pth")
     parser.add_argument(
         "--hifi_config", type=str, default="./hifigan_config_v1_wavlm.json"
     )
