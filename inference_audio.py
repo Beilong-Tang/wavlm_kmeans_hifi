@@ -25,7 +25,10 @@ def inference(rank: int, args: argparse.Namespace):
     wavlm = WavLM(args.wavlm_ckpt).to(device)
     model = WavLMKmeansConformer(
         kmeans_path=args.kmeans_path, hifi_config=args.hifi_config
-    ).to(device)
+    )
+    ckpt = torch.load(args.ckpt_path)
+    model.load_state_dict(ckpt)
+    model.to(device)
     model.eval()
     print(f"rank {rank} got data number {len(source_list)}")
     print(f"output directory {args.output_dir}")
