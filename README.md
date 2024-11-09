@@ -41,8 +41,8 @@ Kmeans and Detokenizer is trained on LJSpeech (Single speaker talking).
 
 #### Pre-requisite
 
-1. Download our conformer ckpt from [here](https://drive.google.com/file/d/1a3LbfVxURgcy7oM3K-IZzQ_Gz6-W_msL/view?usp=sharing) to `./ckpt/LJSpeech` folder (or anywhere).
-2. Download Kmeans model from [here](https://drive.google.com/file/d/1ckxOx5MVxuHB_6qeEJo1Ae_c-8wZEgY5/view?usp=sharing) to `./ckpt/LJSpeech` folder (or anywhere).
+1. Download our conformer ckpt from [here](https://drive.google.com/file/d/1FRS-iKEbtwnRy9Ihyc1VGoM-j7JAFXdP/view?usp=sharing) to `./ckpt/LJSpeech` folder (or anywhere).
+2. Download Kmeans model from [here](https://drive.google.com/file/d/1laO1yI35VTqxmfgv2opWqj2FMiJlwL3L/view?usp=sharing) to `./ckpt/LJSpeech` folder (or anywhere).
 c
 #### Running
 
