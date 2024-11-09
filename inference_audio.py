@@ -14,6 +14,7 @@ from models.wavlm.WavLMWrapper import WavLMWrapper as WavLM
 from model import WavLMKmeansConformer
 import torchaudio
 import tqdm
+import yaml
 
 SEED = 1234
 
@@ -23,9 +24,14 @@ def inference(rank: int, args: argparse.Namespace):
         rank :: args.num_proc
     ]  # list of audio paths
     wavlm = WavLM(args.wavlm_ckpt).to(device)
-    model = WavLMKmeansConformer(
-        kmeans_path=args.kmeans_path, hifi_config=args.hifi_config
-    )
+    if args.config is not None:
+        with open(args.config, "r") as file:
+            config = yaml.safe_load(file)
+        model = WavLMKmeansConformer(**config, kmeans_path=args.kmeans_path, hifi_config=args.hifi_config)
+    else:
+        model = WavLMKmeansConformer(
+            kmeans_path=args.kmeans_path, hifi_config=args.hifi_config
+        )
     ckpt = torch.load(args.ckpt_path)
     model.load_state_dict(ckpt)
     model.to(device)
@@ -71,6 +77,7 @@ if __name__ == "__main__":
     parser.add_argument("--wavlm_ckpt", type=str, default="./ckpt/WavLM-Large.pt")
     parser.add_argument("--kmeans_path", type=str, default="./ckpt/LibriSpeech_wavlm_k1000_L7.pt")
     parser.add_argument("--ckpt_path", type=str, default = "./ckpt/step160000_model.pth")
+    parser.add_argument("--conf_path", type=str, default = None, help = "model config file")
     parser.add_argument(
         "--hifi_config", type=str, default="./hifigan_config_v1_wavlm.json"
     )
