@@ -2,3 +2,4 @@
 *.pth
 *.scp
 __pycache__
+*.wav

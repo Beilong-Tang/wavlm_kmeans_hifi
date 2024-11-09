@@ -33,6 +33,19 @@ python inference_audio.py --audio_scp <audio_scp> --output_dir <output_dir>
 ```
 
 
+## Experiments
 
+### LJSpeech
 
+Kmeans and Detokenizer is trained on LJSpeech (Single speaker talking).
 
+#### Pre-requisite
+
+1. Download our conformer ckpt from [here](https://drive.google.com/file/d/1a3LbfVxURgcy7oM3K-IZzQ_Gz6-W_msL/view?usp=sharing) to `./ckpt/LJSpeech` folder (or anywhere).
+2. Download Kmeans model from [here](https://drive.google.com/file/d/1ckxOx5MVxuHB_6qeEJo1Ae_c-8wZEgY5/view?usp=sharing) to `./ckpt/LJSpeech` folder (or anywhere).
+
+#### Running
+
+```shell
+python inference_audio.py --audio_scp <audio_scp> --output_dir <output_dir> --kmeans_path ./ckpt/LJSpeech/ --ckpt_path ./ckpt/LJSpeech 
+```
