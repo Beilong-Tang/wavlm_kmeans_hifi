@@ -42,5 +42,5 @@ cd Voice-Privacy-Challenge-2024
 bash 02_eval.sh
 ```
 
-check the results from `exp/ults_summary/result_for_rank_${anon_suffix}`
+check the results from `exp/results_summary/result_for_rank_${anon_suffix}`
 
