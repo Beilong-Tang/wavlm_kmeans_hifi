@@ -29,7 +29,6 @@ def inference(rank: int, args: argparse.Namespace):
             config = yaml.safe_load(file)
         model = WavLMKmeansConformer(**config, kmeans_path=args.kmeans_path, hifi_config=args.hifi_config)
     else:
-        ### Use default config if not provided
         model = WavLMKmeansConformer(
             kmeans_path=args.kmeans_path, hifi_config=args.hifi_config
         )
@@ -46,7 +45,8 @@ def inference(rank: int, args: argparse.Namespace):
             audio, rate = torchaudio.load(s)
             audio = audio.to(device)  # [1,T]
             audio_hat = model.inference_audio(audio, wavlm).cpu()
-            output_path = os.path.join(args.output_dir, s.split("/")[-1])
+            filename = s.split("/")[-1].replace('.flac','.wav')
+            output_path = os.path.join(args.output_dir, filename)
             torchaudio.save(output_path, audio_hat, rate)
             pass
     pass

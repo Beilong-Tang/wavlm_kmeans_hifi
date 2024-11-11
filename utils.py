@@ -19,5 +19,8 @@ def get_source_list(file_path: str):
     with open(file_path, "r") as f:
         for line in f.readlines():
             l = line.replace("\n", "").rstrip()
-            files.append(l)
+            if '|' in l:
+                files.append(l.split(' ')[-2])
+            else:
+                files.append(l.split(' ')[-1])
     return files
