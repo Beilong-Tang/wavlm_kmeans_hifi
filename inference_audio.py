@@ -29,6 +29,7 @@ def inference(rank: int, args: argparse.Namespace):
             config = yaml.safe_load(file)
         model = WavLMKmeansConformer(**config, kmeans_path=args.kmeans_path, hifi_config=args.hifi_config)
     else:
+        ### Use default config if not provided
         model = WavLMKmeansConformer(
             kmeans_path=args.kmeans_path, hifi_config=args.hifi_config
         )

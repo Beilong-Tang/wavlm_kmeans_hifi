@@ -43,9 +43,23 @@ Kmeans and Detokenizer is trained on LJSpeech (Single speaker talking).
 
 1. Download our conformer ckpt from [here](https://drive.google.com/file/d/1FRS-iKEbtwnRy9Ihyc1VGoM-j7JAFXdP/view?usp=sharing) to `./ckpt/LJSpeech` folder (or anywhere).
 2. Download Kmeans model from [here](https://drive.google.com/file/d/1laO1yI35VTqxmfgv2opWqj2FMiJlwL3L/view?usp=sharing) to `./ckpt/LJSpeech` folder (or anywhere).
-c
+
 #### Running
 
 ```shell
 python inference_audio.py --audio_scp <audio_scp> --output_dir <output_dir> --kmeans_path ./ckpt/LJSpeech/kmeans-cluster-1024-k_1024.pt --ckpt_path ./ckpt/LJSpeech/LJSpeech_k_1024_model.pt --config ./ckpt/LJSpeech/K_1024.yaml
+```
+
+
+### MSP-IMPROV
+
+#### Pre-requisite
+
+1. Download our conformer ckpt from [here](https://drive.google.com/file/d/1G_sD2-UkvzezsqGHLzc-H6Kirx489iR_/view?usp=sharing) to `./ckpt/MSP-IMPROV` folder (or anywhere).
+2. Download Kmeans model from [here](https://drive.google.com/file/d/1UYdbNz0aquUsQWqLERbRxylz3C7XVODU/view?usp=sharing) to `./ckpt/MSP-IMPROV` folder (or anywhere).
+
+#### Running
+
+```shell
+python inference_audio.py --audio_scp <audio_scp> --output_dir <output_dir> --kmeans_path ./ckpt/MSP-IMPROV/MSP_IMPROV_kmeans-cluster-1024-k_1024.pt --ckpt_path ./ckpt/MSP-IMPROV/MSP-Improv_k_1024_model.pt
 ```
