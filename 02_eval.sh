@@ -7,8 +7,8 @@ source env.sh
 
 old_suffix=
 
-anon_suffix=_llm2 $TODO
-submit_wav_dir=/home/xiaoxiao/anon_lm/wavlm_kmeans_hifi/anon_speech/ $TODO
+anon_suffix=_llm2 #$TODO
+submit_wav_dir=/home/xiaoxiao/anon_lm/wavlm_kmeans_hifi/anon_speech/ #$TODO
 tar_dir=data
 
 
