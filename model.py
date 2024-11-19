@@ -96,3 +96,4 @@ class WavLMKmeansConformer(nn.Module):
         emb = self.forward(emb, None)[0]
         audio_hat = self.recon(emb)  # [1,T]
         return audio_hat
+
