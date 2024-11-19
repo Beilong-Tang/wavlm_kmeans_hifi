@@ -63,3 +63,23 @@ python inference_audio.py --audio_scp <audio_scp> --output_dir <output_dir> --km
 ```shell
 python inference_audio.py --audio_scp <audio_scp> --output_dir <output_dir> --kmeans_path ./ckpt/MSP-IMPROV/MSP_IMPROV_kmeans-cluster-1024-k_1024.pt --ckpt_path ./ckpt/MSP-IMPROV/MSP-Improv_k_1024_model.pt
 ```
+
+## Inference using multiple models
+
+If you follow the previous steps and the models and ckpts are downloaded
+in the cooresponding folders. You can directly run
+
+```shell
+python inference_audio_fusion.py 
+```
+
+which will run the inference using __LibriSpeech__, __LJSpeech__, and __MSP_IMPROV__. 
+
+If not, you can check the arguments in `inference_audio_fusion.py` and 
+change the model ckpt directly. 
+
+The `kmeans_path`, `ckpt_path` , `config`
+are now a list of strings where each triple is a model with corresponding
+kmeans ckpt and conformer ckpt. 
+
+We randomly select audios from the scp to be output by any one of the model.
