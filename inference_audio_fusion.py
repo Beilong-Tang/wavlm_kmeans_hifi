@@ -120,7 +120,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--config",
         nargs="+",
-        default=["none", "./ckpt/LJSpeech/K_1024.yaml", "none"],
+        default=["none", "./ckpt/LJSpeech/k_1024.yaml", "none"],
         help="model config file, none stands for default",
     )
     parser.add_argument(
