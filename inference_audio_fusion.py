@@ -26,7 +26,7 @@ def load_model(
     if config_path.lower() == "none":
         model = WavLMKmeansConformer(kmeans_path=kmeans_path, hifi_config=hifi_config)
     else:
-        with open(args.config, "r") as file:
+        with open(config_path, "r") as file:
             config = yaml.safe_load(file)
         model = WavLMKmeansConformer(
             **config, kmeans_path=kmeans_path, hifi_config=hifi_config
