@@ -37,7 +37,8 @@ def load_model(
     model.eval()
     return model
 
-def split_list(a:list, size:int):
+
+def split_list(a: list, size: int):
     res = []
     for i in range(0, size):
         res.append(list(a[i::size]))
@@ -56,9 +57,11 @@ def inference(rank: int, args: argparse.Namespace):
     os.makedirs(args.output_dir, exist_ok=True)
     assert len(args.kmeans_path) == len(args.ckpt_path) and len(args.ckpt_path) == len(
         args.config
-    ) # make sure kmeans_path, ckpt_path, config is the same length
+    )  # make sure kmeans_path, ckpt_path, config is the same length
     source_res = split_list(source_list, len(args.kmeans_path))
-    for _kmeans, _ckpt, _config, _source in zip(args.kmeans_path, args.ckpt_path, args.config, source_res):
+    for _kmeans, _ckpt, _config, _source in zip(
+        args.kmeans_path, args.ckpt_path, args.config, source_res
+    ):
         model = load_model(_config, _kmeans, args.hifi_config, _ckpt, device)
         with torch.no_grad():
             for s in tqdm.tqdm(_source):
@@ -97,10 +100,22 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, required=True)
     parser.add_argument("--wavlm_ckpt", type=str, default="./ckpt/WavLM-Large.pt")
     parser.add_argument(
-        "--kmeans_path", nargs="+", default=["./ckpt/LibriSpeech_wavlm_k1000_L7.pt", "./ckpt/LJSpeech/kmeans-cluster-1024-k_1024.pt" , "./ckpt/MSP-IMPROV/MSP_IMPROV_kmeans-cluster-1024-k_1024.pt"]
+        "--kmeans_path",
+        nargs="+",
+        default=[
+            "./ckpt/LibriSpeech_wavlm_k1000_L7.pt",
+            "./ckpt/LJSpeech/kmeans-cluster-1024-k_1024.pt",
+            "./ckpt/MSP-IMPROV/MSP_IMPROV_kmeans-cluster-1024-k_1024.pt",
+        ],
     )
     parser.add_argument(
-        "--ckpt_path", nargs="+", default=["./ckpt/step160000_model.pth", "./ckpt/LJSpeech/LJSpeech_k_1024_model.pt", "./ckpt/MSP-IMPROV/MSP-Improv_k_1024_model.pt"]
+        "--ckpt_path",
+        nargs="+",
+        default=[
+            "./ckpt/step160000_model.pth",
+            "./ckpt/LJSpeech/LJSpeech_k_1024_model.pt",
+            "./ckpt/MSP-IMPROV/MSP-Improv_k_1024_model.pt",
+        ],
     )
     parser.add_argument(
         "--config",
