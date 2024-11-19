@@ -47,7 +47,7 @@ Kmeans and Detokenizer is trained on LJSpeech (Single speaker talking).
 #### Running
 
 ```shell
-python inference_audio.py --audio_scp <audio_scp> --output_dir <output_dir> --kmeans_path ./ckpt/LJSpeech/kmeans-cluster-1024-k_1024.pt --ckpt_path ./ckpt/LJSpeech/LJSpeech_k_1024_model.pt --config ./ckpt/LJSpeech/K_1024.yaml
+python inference_audio.py --audio_scp <audio_scp> --output_dir <output_dir> --kmeans_path ./ckpt/LJSpeech/kmeans-cluster-1024-k_1024.pt --ckpt_path ./ckpt/LJSpeech/LJSpeech_k_1024_model.pt --config ./ckpt/LJSpeech/k_1024.yaml
 ```
 
 
