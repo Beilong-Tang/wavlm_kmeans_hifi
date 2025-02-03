@@ -83,3 +83,11 @@ are now a list of strings where each triple is a model with corresponding
 kmeans ckpt and conformer ckpt. 
 
 We randomly select audios from the scp to be output by any one of the model.
+
+
+## Multiple LibriSpeech speakers (random)
+
+### exp1 
+
+#### Introduction
+
