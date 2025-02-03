@@ -19,5 +19,5 @@ Secondly, run:
 ```shell
 kmeans_dir=ckpt/librispeech_1_10spk
 kmeans_ckpts=$(find $kmeans_dir -type f | tr '\n' ' ') # Get all the ckpts and separate them into spaces
-python inference_audio.py --kmeans_path $kmeans_ckpts --audio_scp <audio_scp> --output_dir <output_dir> # Replace audio_scp and output_dir 
+python inference_audio_multi_kmeans.py --kmeans_path $kmeans_ckpts --audio_scp <audio_scp> --output_dir <output_dir> # Replace audio_scp and output_dir 
 ```
