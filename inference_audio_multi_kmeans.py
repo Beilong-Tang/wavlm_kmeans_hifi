@@ -46,7 +46,7 @@ def load_model(
 #     return res
 
 def random_split(arr: list, size: int) -> List[str]:
-    res = [[] for _ in size]
+    res = [[] for _ in range(size)]
     idx_list = list(range(size))
     for a in arr:
         idx = random.choice(idx_list)
@@ -69,6 +69,8 @@ def inference(rank: int, args: argparse.Namespace):
     source_res = random_split(source_list, len(args.kmeans_path)) # 
     # 2. Iterate them, initialize kmeans model
     for _k_idx, _scp in enumerate(source_res):
+        if len(_scp) == 0:
+            continue
         model = load_model(args.config, args.kmeans_path[_k_idx], args.hifi_config, args.ckpt_path, device)
         print(f"Rank {rank} using kmeans model idx {_k_idx} to infer audios of length {len(_scp)}...")
         with torch.no_grad():
@@ -83,6 +85,7 @@ def inference(rank: int, args: argparse.Namespace):
 
 def main(args):
     # os.makedirs(args.)
+    print("kmeans ckpts: ", args.kmeans_path)
     setup_seed(SEED)
     mp.spawn(inference, args=(args,), nprocs=args.num_proc, join=True)
     print("Done...")
