@@ -33,7 +33,7 @@ tr_360=$(ls /SMIIPdata3/zbang/Corpus/librispeech/LibriSpeech/train-clean-360 | t
 tr_100=$(ls /SMIIPdata3/zbang/Corpus/librispeech/LibriSpeech/train-clean-100 | tr '\n' ' ') # train-clean-100
 
 config=exp/librispeech_multiple/config/k_1024.yaml
-ckpt_dir=exp/librispeech_multiple/ckpt/librispeech_k_1024_config_all
+ckpt_dir=exp/librispeech_multiple/ckpt/librispeech_k_1024_all_spks
 
 spks="$tr_360 $tr_100"
 python -u kmeans/train_kmeans_librispeech.py --base_path $base_path \
