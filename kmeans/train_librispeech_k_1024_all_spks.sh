@@ -32,8 +32,8 @@ gpus="cuda:1 cuda:2 cuda:3 cuda:4 cuda:6 cuda:7"
 tr_360=$(ls /SMIIPdata3/zbang/Corpus/librispeech/LibriSpeech/train-clean-360 | tr '\n' ' ') # train-clean-360
 tr_100=$(ls /SMIIPdata3/zbang/Corpus/librispeech/LibriSpeech/train-clean-100 | tr '\n' ' ') # train-clean-100
 
-config=exp/librispeech_multiple/config/k_1024.yaml
-ckpt_dir=exp/librispeech_multiple/ckpt/librispeech_k_1024_all_spks
+config=kmeans/exp/librispeech_k_1024_all_spks/k_1024.yaml
+ckpt_dir=kmeans/exp/librispeech_k_1024_all_spks/ckpt/librispeech_k_1024_all_spks
 
 spks="$tr_360 $tr_100"
 python -u kmeans/train_kmeans_librispeech.py --base_path $base_path \
