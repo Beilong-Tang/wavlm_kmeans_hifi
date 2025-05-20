@@ -84,6 +84,19 @@ class WavLMKmeansConformer(nn.Module):
                 ),
             )
             return self.hifi(res)
+    
+    @torch.no_grad()
+    def inference_emb(self,embedding):
+        """
+        kmeans discrete embedding [1,T',E] -> wav Audio [1,T]
+        """
+        res, _ = self.conformer(
+            embedding,
+            torch.full((embedding.shape[0],), embedding.shape[1]).to(
+                embedding.device
+            ),
+        )
+        return self.hifi(res)
 
     @torch.no_grad()
     def inference_audio(self, x, wavlm: nn.Module):
