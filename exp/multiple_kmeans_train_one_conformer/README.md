@@ -8,7 +8,7 @@ This experiment trains a single conformer model using different kmeans model fro
 ## Pre-requistie
 
 1. go to `exp/multiple_kmeans_one_conformer` if you are in repository root directory
-2. Download conformer model from [here]() to `ckpt/`
+2. Download conformer model from [here](https://drive.google.com/file/d/1E9NDTnsQp73bHu1Xn8-aTdPDqq1w0K5x/view?usp=sharing) to `ckpt/`
 
 ## Experiments overview
 
