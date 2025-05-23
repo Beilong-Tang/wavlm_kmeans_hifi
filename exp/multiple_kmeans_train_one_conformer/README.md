@@ -46,7 +46,7 @@ Note that you can also add `--kmeans_num <int>` to specify how many random kmean
 
 ### 2. Random Kmeans for each frame
 
-Note that we use `stride` control the number of the consecutive frames that are from the same kmeans model
+Note that we use `stride` control the number of the consecutive frames that are from the same kmeans model.
 
 ```shell
 ckpt=<path-to-conformer-ckpt> # downloaded above
