@@ -5,7 +5,7 @@ import os
 import sys
 
 from pathlib import Path
-sys.path.append(Path(__file__).absolute().parent.parent.parent)
+sys.path.append(str(Path(__file__).absolute().parent.parent.parent))
 
 from utils import setup_seed
 from utils import get_source_list
@@ -19,12 +19,6 @@ import random
 from typing  import List
 
 SEED = 1234
-
-# def split_list(a: list, size: int):
-#     res = []
-#     for i in range(0, size):
-#         res.append(list(a[i::size]))
-#     return res
 
 def random_split(arr: list, size: int) -> List[str]:
     res = [[] for _ in range(size)]
@@ -49,6 +43,7 @@ def inference(rank: int, args: argparse.Namespace):
     # 1. Initlize conformer path
     ckpt = torch.load(args.ckpt, map_location = 'cpu')
     detokenizer = Detokenizer(**ckpt['extra']['model_config'])
+    detokenizer.load_state_dict(ckpt['model_state_dict'])
     detokenizer.eval()
     detokenizer.to(device)
 
@@ -82,8 +77,8 @@ def inference(rank: int, args: argparse.Namespace):
 
 def main(args):
     # os.makedirs(args.)
-    print("kmeans ckpts: ", args.kmeans_path)
     setup_seed(SEED)
+    print(args.gpus)
     mp.spawn(inference, args=(args,), nprocs=args.num_proc, join=True)
     print("Done...")
     pass
@@ -118,7 +113,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--ckpt",
         type = str,
-        default="ckpt/librispeech_conformer_e_43.pth",
+        default="ckpt/librispeech_conformer_e_50.pth",
         help = "path to conformer ckpt"
     )
     parser.add_argument(
