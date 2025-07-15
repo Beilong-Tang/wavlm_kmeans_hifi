@@ -14,9 +14,10 @@ ckpt/
 └── WavLM-Large.pt
 ```
 
-## Anonymize testdata
+## Anonymize Testdata
  
-bash 01_gen_test.sh
+```bash 00_test.sh```
+The anonymized speech is saved to `testdata/anon/`
 
 
 ## Anonymize VPC data
@@ -46,19 +47,19 @@ A password is required; please register to get the password.
 `ln -sr Voice-Privacy-Challenge-2024/corpora .`
 
 ```shell
-bash 01_gen.sh
+bash 01_gen_vpc.sh
 ```
 
 
 ### Evaluate generated speech
 
-change `$anon_dir` and `$anon_suffix` in `02_eval.sh` and
-cp `02_eval.sh` to `Voice-Privacy-Challenge-2024/`
+change `$anon_dir` and `$anon_suffix` in `02_eval_vpc.sh` and
+cp `02_eval_vpc.sh` to `Voice-Privacy-Challenge-2024/`
 
 cd Voice-Privacy-Challenge-2024
 
 ```shell
-bash 02_eval.sh
+bash 02_eval_vpc.sh
 ```
 
 check the results from `exp/results_summary/result_for_rank_${anon_suffix}`
