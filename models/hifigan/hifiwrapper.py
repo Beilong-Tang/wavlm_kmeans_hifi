@@ -2,6 +2,7 @@ from .models import Generator
 import torch
 import json
 import torch.nn as nn
+from typing import Union
 
 
 class AttrDict(dict):
@@ -11,11 +12,14 @@ class AttrDict(dict):
 
 
 class HifiGan(nn.Module):
-    def __init__(self, config, path=None):
+    def __init__(self, config:Union[dict, str], path=None):
         super().__init__()
-        with open(config) as f:
-            data = f.read()
-        json_config = json.loads(data)
+        if isinstance(config, str):
+            with open(config) as f:
+                data = f.read()
+            json_config = json.loads(data)
+        else:
+            json_config = config
         h = AttrDict(json_config)
         model = Generator(h)
         if path is not None:
