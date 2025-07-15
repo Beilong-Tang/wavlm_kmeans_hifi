@@ -14,12 +14,13 @@ ckpt/
 └── WavLM-Large.pt
 ```
 
-## Anonymize testdata
+## 1. Anonymize Testdata
  
-bash 01_gen_test.sh
+```bash 01_gen_test.sh```
 
+The anonymized data is saved to `testdata/anon/`
 
-## Anonymize VPC data
+## 2. Anonymize and evaluate VPC data 
 ### Install and download VPC data
 
 follow instructions https://github.com/Voice-Privacy-Challenge/Voice-Privacy-Challenge-2024 
